@@ -1,0 +1,49 @@
+---
+title: Account and data security
+description: What the panel does to reduce the load on Telegram accounts and what stays the operator's responsibility.
+lastUpdated: 2026-08-01
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="No promises">
+No tool can guarantee that a Telegram account stays intact. The platform decides on restrictions,
+and there is no universally “safe” pace — it depends on the account's age, its history and the target
+itself.
+</Aside>
+
+## What the panel does
+
+**Spread pauses.** The pace profile sets the gaps between actions, and every pause differs slightly
+from the previous one — consecutive actions never repeat the same interval.
+
+**FloodWait handling.** If Telegram asks to wait, the thread pauses instead of pushing the account
+further. In inviting there is a choice: wait out the delay and continue, or stop that account
+for the current job.
+
+**Daily limits and a night break.** Configured separately from pace.
+
+**Stopping before sending.** Some actions are stopped by protection before Telegram is contacted —
+in the results this appears as a skip rather than an error.
+
+**Thread isolation.** Pause and stop apply to a single account; the neighbours keep working.
+
+## What depends on the operator
+
+- **A proxy on every account** — before the first action in Telegram, not after.
+- **Warmup before working tasks** — duration matched to the account's age.
+- **Sensible volume** — putting the whole limit on one account instead of spreading it across
+  the fleet remains the most common cause of problems.
+- **A filled-in profile** — the panel does not set the name, avatar and bio for you.
+- **Varied text** — an identical message from every account is obvious to readers and anti-spam alike.
+
+## Data in this documentation
+
+The screenshots in this knowledge base were taken on demonstration data: there are no real phone
+numbers, sessions, proxy credentials or client usernames in frame.
+
+## What warmup does not do
+
+Warmup does not lift restrictions already imposed and does not unblock an account. An account under
+restriction has to be checked and recovered first — see the
+[warmup guide](/en/modules/account-warmup/).

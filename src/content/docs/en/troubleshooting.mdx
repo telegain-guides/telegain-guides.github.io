@@ -1,0 +1,65 @@
+---
+title: Troubleshooting runs
+description: What FloodWait, skipped targets and the “Partial” status mean in TeleGain jobs, and what to do about them.
+lastUpdated: 2026-08-01
+---
+
+Most questions about a job's result come down to a handful of typical situations.
+
+## The job finished with “Partial”
+
+This marks a run where some targets were left deferred or unsuccessful. It is **not a failure**:
+the status honestly says not everything could be closed, and the breakdown by reason is in the results.
+
+## An account hit a FloodWait
+
+Telegram asked it to wait. The thread pauses instead of pushing the account further.
+
+In [inviting](/en/modules/inviting/) there are two responses: wait and continue, or stop that account
+for the current job. The other accounts keep working, and the stopped account's unfinished targets
+are handed to another free one — they are not lost.
+
+An “extra pause” adds your own minutes to the delay Telegram named.
+
+## A target was skipped
+
+Reasons differ by module but fall into three groups.
+
+**On the target's side.** The user has no active stories; comments are closed in the channel;
+reactions are disabled for everyone; the person forbids being added to groups in their privacy settings.
+
+**On the account's side.** The daily limit is exhausted; the account is waiting out a pause;
+the account was stopped in this job; the account is not in the chat and joining is turned off.
+
+**On the dataset's side.** The target appeared twice — no repeat action is sent.
+
+The exact reason for each target is visible in the run results.
+
+## The run did nothing
+
+Nothing sent, no errors. Typical causes:
+
+- No new posts appeared in the sources during the observation window —
+  [AI commenting](/en/modules/neurocommenting/) only works with fresh posts.
+- The keyword filter removed every post.
+- Targets were chosen where the action is forbidden for everyone.
+- The observation window is shorter than the rate at which new targets appear.
+
+## The launch button is disabled
+
+In [inviting](/en/modules/inviting/) the permission check runs on every selected account. Until at
+least one is confirmed, launch is blocked — so the job never starts on accounts whose rights are
+unknown. The hint under the button names what is missing.
+
+## The plan is smaller than expected
+
+Inviting has two limits: the total for the job and the maximum per account. Whichever runs out first
+applies, so the actual volume equals the smaller of the two: the total limit, and “maximum per
+account × number of accounts”. The gap is visible in the thread distribution block before the start.
+
+## Comments or reactions are not going through
+
+- The action is disabled for all participants on the target.
+- The action is forbidden for this account there.
+- Telegram's own limit was reached.
+- Telegram requires joining the chat and joining is turned off in the job settings.

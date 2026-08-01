@@ -1,0 +1,62 @@
+---
+title: Frequently asked questions
+description: Answers to recurring questions about running TeleGain modules — accounts, proxies, limits, warmup and Telegram Premium.
+lastUpdated: 2026-08-01
+---
+
+## Accounts and proxies
+
+**Does every account need a proxy?**
+Yes. Without a proxy an account will not run, and the binding is needed before the account's first
+action in Telegram.
+
+**How many accounts can go on one job?**
+As many as your plan allows in concurrent threads: one account occupies one thread.
+
+**Can other modules run during warmup?**
+No. The account is busy warming up. Warm one part of the fleet while another works.
+
+**Will warmup remove a spam block?**
+No. Warmup builds a history of ordinary activity but does not undo restrictions Telegram has
+already imposed.
+
+## Runs and results
+
+**Why did the job finish with “Partial”?**
+Some targets were left deferred or unsuccessful. See [troubleshooting](/en/troubleshooting/).
+
+**Can I stop one account without touching the others?**
+Yes. Pause and stop apply to an individual line; the neighbouring accounts keep working.
+
+**What happens to a stopped account's targets?**
+Unfinished ones are handed to another free account rather than lost.
+
+**Is a limit spent on people already in the channel?**
+In inviting, no. The panel checks membership before contacting Telegram, and such a person counts
+as a success without an invitation being sent.
+
+## Language models
+
+**Can it work without an AI provider?**
+Yes, in template mode your pre-written text is sent.
+
+**What if the model does not respond?**
+The action is not performed and the reason stays in the results. No template placeholder is
+substituted for a model reply.
+
+## Telegram Premium
+
+**Is Premium required?**
+Not for ordinary work. Premium is only needed for modes where the action comes from the account's
+personal channel — reactions or comments on behalf of a channel, for example.
+
+## Security
+
+**What pace is safe?**
+There is no single threshold: it depends on the accounts' age, their history and the target. Start
+with the cautious preset on a small volume and watch how Telegram responds, rather than picking
+a number in advance.
+
+**How long should an account be warmed up?**
+From 30 minutes to 7 days. A fresh account needs more than half an hour — a day or more; for an
+account older than a month a short preset is usually enough.

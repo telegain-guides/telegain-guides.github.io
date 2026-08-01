@@ -10,12 +10,15 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 полей и разбор результата. Описание модулей и их назначения находится
 в [каталоге на официальном сайте](https://telegain.net/ru/modules).
 
+Если вы здесь впервые — начните с [подготовки аккаунтов](/getting-started/).
+
 ## Работа с аудиторией
 
 <CardGrid>
 <LinkCard title="Нейрокомментинг" description="Комментарии под новыми постами выбранных каналов." href="/modules/neurocommenting/" />
 <LinkCard title="Инвайтинг" description="Приглашение людей из базы в ваш канал или группу." href="/modules/inviting/" />
 <LinkCard title="Рассылка" description="Отправка подготовленного сообщения по источнику получателей." href="/modules/messaging/" />
+<LinkCard title="Нейрочат" description="Участие аккаунтов в диалогах по правилам и промпту." href="/modules/ai-chat/" />
 <LinkCard title="Массовые реакции" description="Реакции на существующие и новые сообщения в целях." href="/modules/reactions/" />
 <LinkCard title="Просмотр историй" description="Просмотр историй по базе целей и реакции на них." href="/modules/story-views/" />
 </CardGrid>
@@ -24,6 +27,24 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
 <LinkCard title="Прогрев аккаунтов" description="Микросессии обычной активности перед рабочими задачами." href="/modules/account-warmup/" />
-<LinkCard title="Парсеры" description="Сбор участников, каналов, сообщений и комментаторов в базы." href="/modules/parsers/" />
+<LinkCard title="Парсеры" description="Сбор участников, каналов и сообщений в сохранённые базы." href="/modules/parsers/" />
+<LinkCard title="Менеджер аккаунтов" description="Импорт, статусы, фильтры и пакетные действия." href="/modules/account-manager/" />
+<LinkCard title="Пулы аккаунтов" description="Сохранённые группы аккаунтов для повторного выбора." href="/modules/account-pools/" />
 <LinkCard title="Прокси-центр" description="Импорт прокси и привязка к аккаунтам до первого действия." href="/modules/proxy-center/" />
 </CardGrid>
+
+## Наблюдение и регулярность
+
+<CardGrid>
+<LinkCard title="Статистика" description="Агрегаты по задачам, аккаунтам и прокси с источником данных." href="/modules/statistics/" />
+<LinkCard title="Автоматизация" description="Расписания и условия запуска для поддерживаемых задач." href="/modules/automation/" />
+<LinkCard title="Журнал жалоб" description="Обращения к платформе по реальным нарушениям." href="/modules/reporting/" />
+</CardGrid>
+
+## С чего начинается любой запуск
+
+| Условие | Почему |
+| --- | --- |
+| [Прокси у каждого аккаунта](/modules/proxy-center/) | Без прокси аккаунт в работу не пойдёт |
+| [Прогрев](/modules/account-warmup/) | Свежие аккаунты Telegram ограничивает быстрее всего |
+| [База целей нужного типа](/modules/parsers/) | Инвайтинг работает с людьми, комментирование — с каналами |

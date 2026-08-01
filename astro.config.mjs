@@ -18,7 +18,13 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: [
     starlight({
-      title: 'Документация TeleGain',
+      // Заголовок задан по локалям: иначе суффикс <title> и подпись в шапке
+      // остаются русскими на английских и украинских страницах.
+      title: {
+        root: 'Документация TeleGain',
+        uk: 'Документація TeleGain',
+        en: 'TeleGain Documentation',
+      },
       description:
         'Пошаговые руководства по модулям TeleGain: нейрокомментинг, прогрев аккаунтов, ' +
         'инвайтинг, рассылки, парсеры и работа с прокси.',
@@ -44,21 +50,51 @@ export default defineConfig({
       lastUpdated: true,
       pagination: true,
       sidebar: [
-        { label: 'Начало работы', items: [{ autogenerate: { directory: 'getting-started' } }] },
-        { label: 'Модули', items: [{ autogenerate: { directory: 'modules' } }] },
+        {
+          label: 'Начало работы',
+          translations: { uk: 'Початок роботи', en: 'Getting started' },
+          items: [{ autogenerate: { directory: 'getting-started' } }],
+        },
+        {
+          label: 'Модули',
+          translations: { uk: 'Модулі', en: 'Modules' },
+          items: [{ autogenerate: { directory: 'modules' } }],
+        },
         {
           label: 'Правила и безопасность',
+          translations: { uk: 'Правила та безпека', en: 'Rules and security' },
           items: [
-            { label: 'Диагностика запусков', slug: 'troubleshooting' },
-            { label: 'Безопасность аккаунтов и данных', slug: 'security' },
-            { label: 'Ответственное использование', slug: 'responsible-use' },
+            {
+              label: 'Диагностика запусков',
+              translations: { uk: 'Діагностика запусків', en: 'Troubleshooting runs' },
+              slug: 'troubleshooting',
+            },
+            {
+              label: 'Безопасность аккаунтов и данных',
+              translations: { uk: 'Безпека акаунтів і даних', en: 'Account and data security' },
+              slug: 'security',
+            },
+            {
+              label: 'Ответственное использование',
+              translations: { uk: 'Відповідальне використання', en: 'Responsible use' },
+              slug: 'responsible-use',
+            },
           ],
         },
         {
           label: 'Справка',
+          translations: { uk: 'Довідка', en: 'Reference' },
           items: [
-            { label: 'Частые вопросы', slug: 'faq' },
-            { label: 'О документации', slug: 'about' },
+            {
+              label: 'Частые вопросы',
+              translations: { uk: 'Часті питання', en: 'FAQ' },
+              slug: 'faq',
+            },
+            {
+              label: 'О документации',
+              translations: { uk: 'Про документацію', en: 'About' },
+              slug: 'about',
+            },
           ],
         },
       ],

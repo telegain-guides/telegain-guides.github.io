@@ -39,6 +39,9 @@ export default defineConfig({
       },
       head: [
         { tag: 'meta', attrs: { property: 'og:site_name', content: 'Документация TeleGain' } },
+        // Подтверждение владения для Bing Webmaster Tools. Не удалять: без тега
+        // подтверждение может быть отозвано.
+        { tag: 'meta', attrs: { name: 'msvalidate.01', content: '6D2CC6AD19227C6210D807200605CECA' } },
         { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
       ],
       social: [

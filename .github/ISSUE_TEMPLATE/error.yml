@@ -1,0 +1,30 @@
+name: Ошибка в инструкции
+description: Опечатка, битая ссылка, неверный шаг или отсутствующее изображение
+title: "[Ошибка] "
+labels: ["documentation", "bug"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Страница документации
+      placeholder: https://telegain-guides.github.io/modules/parsers/
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Тип проблемы
+      options:
+        - Битая ссылка
+        - Отсутствующее или неверное изображение
+        - Неверный или неполный шаг
+        - Опечатка или формулировка
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Описание
+    validations:
+      required: true

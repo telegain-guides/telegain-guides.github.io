@@ -1,0 +1,113 @@
+name: Качество документации
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Еженедельная проверка: ссылки протухают сами по себе, без наших правок.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Сборка с чистого окружения
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Проверка обязательных артефактов
+        run: |
+          test -f dist/sitemap-index.xml || { echo "нет sitemap"; exit 1; }
+          test -f dist/robots.txt       || { echo "нет robots.txt"; exit 1; }
+          test -f dist/404.html         || { echo "нет страницы 404"; exit 1; }
+          echo "sitemap, robots и 404 на месте"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+          retention-days: 1
+
+  links:
+    name: Битые ссылки
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+      - name: Проверка внутренних ссылок и изображений
+        run: |
+          # Внутренние ссылки и картинки проверяются по собранному дереву:
+          # так тест не зависит от доступности внешних сайтов.
+          python3 - <<'PY'
+          import os, re, sys
+          root = "dist"
+          pages, bad = [], []
+          for dirpath, _, files in os.walk(root):
+              for f in files:
+                  if f.endswith(".html"):
+                      pages.append(os.path.join(dirpath, f))
+          def exists(target):
+              t = target.split("#")[0].split("?")[0]
+              if not t or t == "/":
+                  return os.path.exists(f"{root}/index.html")
+              p = os.path.join(root, t.strip("/"))
+              return os.path.exists(p) or os.path.exists(p + ".html") or os.path.exists(os.path.join(p, "index.html"))
+          for page in pages:
+              html = open(page, encoding="utf-8").read()
+              for attr in ("href", "src"):
+                  for m in re.finditer(attr + r'="(/[^"]*)"', html):
+                      if not exists(m.group(1)):
+                          bad.append((page.replace(root, ""), m.group(1)))
+          if bad:
+              for p, t in sorted(set(bad))[:40]:
+                  print(f"БИТАЯ ССЫЛКА: {p} -> {t}")
+              print(f"\nвсего: {len(set(bad))}")
+              sys.exit(1)
+          print(f"проверено страниц: {len(pages)}; битых внутренних ссылок нет")
+          PY
+
+  content:
+    name: Контентные требования
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Alt-тексты, даты проверки и запрещённые обещания
+        run: |
+          python3 - <<'PY'
+          import os, re, sys
+          problems = []
+          # Обещания, которых в документации быть не должно.
+          BANNED = ["полностью безопасно", "без банов", "100% доставка",
+                    "гарантированный результат", "обход ограничений telegram"]
+          for dirpath, _, files in os.walk("src/content/docs"):
+              for f in files:
+                  if not f.endswith((".md", ".mdx")):
+                      continue
+                  path = os.path.join(dirpath, f)
+                  text = open(path, encoding="utf-8").read()
+                  low = text.lower()
+                  for phrase in BANNED:
+                      if phrase in low:
+                          problems.append(f"{path}: запрещённая формулировка «{phrase}»")
+                  for m in re.finditer(r'<img\s[^>]*>', text):
+                      tag = m.group(0)
+                      alt = re.search(r'alt="([^"]*)"', tag)
+                      if not alt or len(alt.group(1).strip()) < 10:
+                          problems.append(f"{path}: изображение без содержательного alt")
+                  if "template: splash" not in text and "lastUpdated" not in text:
+                      problems.append(f"{path}: нет даты последней проверки")
+          if problems:
+              for p in problems[:40]:
+                  print("ПРОБЛЕМА:", p)
+              sys.exit(1)
+          print("alt-тексты, даты проверки и формулировки в порядке")
+          PY

@@ -1,0 +1,33 @@
+name: Документация устарела
+description: Инструкция не совпадает с текущим интерфейсом или поведением панели
+title: "[Устарело] "
+labels: ["documentation", "outdated"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Страница документации
+      description: Адрес страницы, где найдено расхождение
+      placeholder: https://telegain-guides.github.io/modules/inviting/
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Что написано в инструкции
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Что на самом деле в панели
+      description: Опишите фактическое поведение. Скриншот приложите без личных данных.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Данные
+      options:
+        - label: В приложенных материалах нет телефонов, сессий, реквизитов прокси и юзернеймов клиентов
+          required: true

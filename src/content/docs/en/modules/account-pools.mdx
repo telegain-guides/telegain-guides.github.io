@@ -1,0 +1,87 @@
+---
+title: 'TeleGain: How to build an account pool?'
+description: Account pools in TeleGain — saving a group of accounts, why it matters and how to reuse the same selection across jobs.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+A pool is a saved group of accounts you can select in a job as a whole, instead of rebuilding
+the selection every time.
+
+The section overview lives on the [account pools page](https://telegain.net/en/modules/account-pools).
+
+## Why it matters
+
+With a small fleet a selection takes a minute to assemble by hand. With dozens of accounts, manual
+assembly becomes a source of mistakes: an account that is warming up ends up in a job, or one with
+a different proxy profile does.
+
+<Aside type="tip" title="The practical point">
+A pool fixes the **composition**, not just convenience. “Commenters”, “inviters”, “reserve” are
+different groups with different histories and different risk. Mixing them in one job is rarely
+a good idea.
+</Aside>
+
+## How to build one
+
+<Steps>
+
+1. **Select accounts in the [account manager](/en/modules/account-manager/).**
+
+   Select by purpose: accounts for one type of task should have comparable preparation.
+
+2. **Save them as a pool** and give it a clear name.
+
+   <figure>
+     <img src="/screenshots/account-pools.webp" alt="TeleGain account pools section with saved groups of accounts and their composition" width="1264" height="1080" loading="lazy" />
+     <figcaption>Account pools: saved groups and their composition for reuse in jobs.</figcaption>
+   </figure>
+
+3. **Select the pool when configuring a job** instead of picking accounts by hand.
+
+4. **Keep the composition current.** An account that has been restricted or sent to warmup should
+   leave the working pool — otherwise it will keep entering jobs and being filtered out at the start.
+
+</Steps>
+
+## How to split a fleet
+
+There is no universal scheme, but a working principle is to split by type of load:
+
+| Pool | What it does |
+| --- | --- |
+| Commenters | [AI commenting](/en/modules/neurocommenting/), [AI chat](/en/modules/ai-chat/) |
+| Inviters | [inviting](/en/modules/inviting/) — accounts with rights in the target channels |
+| Senders | [messaging](/en/modules/messaging/) — the heaviest load |
+| Reserve | warms up and waits to replace accounts that drop out |
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| One pool for every task | loads of different types fall on the same accounts |
+| A restricted account left in a working pool | it enters jobs and is filtered out at the start |
+| A pool with no reserve | there is nobody to replace a lost account, and job volume falls |
+
+## FAQ
+
+**Can an account belong to several pools?**
+A pool's composition is visible in the section, and one account may be needed by different
+scenarios. Just remember it runs one job at a time.
+
+**What happens to a pool if an account gets restricted?**
+It stays in the composition but will not go into work. Composition is worth maintaining by hand.
+
+**Does a pool replace filters in the account manager?**
+No. Filters are convenient for a one-off selection; a pool is for the one you need regularly.
+
+## Related guides
+
+- [How to manage Telegram accounts in TeleGain?](/en/modules/account-manager/) — where accounts come from
+- [How to set up proxies for Telegram accounts?](/en/modules/proxy-center/)
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/) — preparing the reserve
+
+---
+
+Official section page: [Account pools](https://telegain.net/en/modules/account-pools)

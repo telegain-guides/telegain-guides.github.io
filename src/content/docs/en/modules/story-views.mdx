@@ -1,0 +1,137 @@
+---
+title: 'TeleGain: How to run mass story views in Telegram?'
+description: Running story views in TeleGain — two viewing cycles, view depth, limits, reactions to stories and why targets get skipped.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Accounts view the stories of people from a chosen dataset. You can either walk through what is
+published right now, or keep targets under observation and pick up new stories as they appear.
+
+The module overview lives on the [story views page](https://telegain.net/en/modules/masslook).
+
+## What you need before launch
+
+- **Accounts with proxies.**
+- **A dataset of targets** — the people whose stories you will view. See [parsers](/en/modules/parsers/).
+
+## How to launch
+
+<Steps>
+
+1. **Choose the viewing cycle.**
+
+   | Cycle | What it does |
+   | --- | --- |
+   | Already published | a single pass over what exists now, then the run ends |
+   | Watch for new | targets stay under observation for a set window, stories are picked up as they appear |
+
+   <figure>
+     <img src="/screenshots/masslook-setup.webp" alt="TeleGain story views setup screen with viewing cycle, limits and view depth" width="1264" height="1080" loading="lazy" />
+     <figcaption>Settings: viewing cycle, limits, view depth and reactions to stories.</figcaption>
+   </figure>
+
+2. **Set limits and depth.**
+
+   - **Stories per account** — how many views one account makes.
+   - **Total limit** — the ceiling for the whole run.
+   - **View depth** — seconds spent on a single story.
+
+   In watch mode an **observation window** and a **check interval** are added — the pause between
+   passes over the target list when no new stories were found.
+
+3. **Decide whether you need reactions.**
+
+   A separate toggle: without it the account simply views. The emoji set and the reaction
+   probability are yours to choose.
+
+4. **Start it and check the result.**
+
+   <figure>
+     <img src="/screenshots/masslook-threads.webp" alt="Story views runs tab showing how many stories each account viewed and an event log" width="1264" height="1080" loading="lazy" />
+     <figcaption>Runs: how many stories each account viewed and the event log.</figcaption>
+   </figure>
+
+</Steps>
+
+## Why view depth matters
+
+Depth is how many seconds an account keeps a story open.
+
+<Aside type="caution" title="Zero seconds looks mechanical">
+Zero means instant skipping: technically the view is counted, but it looks like a bot running down
+a list. A few seconds per story give the picture of an ordinary person who actually watched.
+
+The cost is time: with a large dataset and a depth of several seconds the run stretches out,
+and that is normal.
+</Aside>
+
+## Reactions to stories
+
+- A reaction is more visible than a view — the author gets a separate notification.
+- A small probability works better: reacting to every story looks mechanical.
+- A view is already a touch on its own; a reaction amplifies it.
+
+## A safe test run
+
+<Steps>
+
+1. Take **two accounts** and a dataset of **10 targets** who definitely have stories.
+2. Mode — “already published”, depth — 3 seconds, reactions off.
+3. Run it and read the log: the skip reasons will show the quality of the dataset.
+
+</Steps>
+
+## Why a target may have been skipped
+
+- The user has no active stories.
+- The story is unavailable to this account due to privacy settings.
+- The per-account or total run limit was reached.
+- Telegram asked to wait (FloodWait) — the thread pauses.
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| Zero view depth for speed | the view looks mechanical |
+| The whole total limit on one account | the load is not spread |
+| A short observation window with rare stories | there will be nothing to watch |
+| Reactions on one hundred per cent of stories | the clearest sign of automation |
+
+## Limits and platform rules
+
+Viewing stories is a visible action: the author sees who watched. A reaction amplifies that further.
+Work with datasets where your interest is appropriate, and bear in mind that Telegram's rules take
+precedence over job settings. See [Responsible use](/en/responsible-use/).
+
+## FAQ
+
+**How many stories can one run view?**
+Both limits — per account and total — are set with sliders, and the panel shows the ceiling next
+to them. The defaults sit well below it, and pushing them to the maximum is not advisable.
+
+**What view depth should I set?**
+A few seconds per story. Zero looks mechanical; too much depth stretches the run without
+noticeable benefit.
+
+**What does the check interval mean?**
+The pause between passes over the target list in watch mode. If no new stories were found, the
+module waits out this interval and goes round again. A story that appears is handled immediately.
+
+**How does “already published” differ from “watch for new”?**
+The first is a single pass over what exists now. The second keeps targets under observation for
+a set window.
+
+**Are reactions to stories necessary?**
+Not at all. If you enable them, keep the probability low.
+
+## Related guides
+
+- [How to run mass reactions in Telegram?](/en/modules/reactions/) — the neighbouring module
+- [How to run a Telegram parser?](/en/modules/parsers/) — where to collect the target dataset
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/)
+
+---
+
+Official module page: [Mass story views](https://telegain.net/en/modules/masslook)

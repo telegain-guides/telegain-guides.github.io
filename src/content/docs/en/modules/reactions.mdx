@@ -1,0 +1,144 @@
+---
+title: 'TeleGain: How to run mass reactions in Telegram?'
+description: Running mass reactions in TeleGain — two placement scenarios, reaction probability, limits and rotation, the channel-identity mode and reasons for refusals.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The module places reactions in your targets: it either walks through already published messages
+or keeps targets under observation and reacts to new ones as they appear.
+
+The module overview lives on the
+[mass reactions page](https://telegain.net/en/modules/mass-reactions).
+
+## What you need before launch
+
+- **Accounts with proxies**, preferably [warmed up](/en/modules/account-warmup/).
+- **A list of channels or chats** — entered manually or as a ready dataset.
+
+## How to launch
+
+<Steps>
+
+1. **Choose the scenario.**
+
+   | Scenario | What it does |
+   | --- | --- |
+   | From a ready list | accounts walk through your targets and react to existing messages |
+   | Watch for new | the module keeps targets under observation and reacts to fresh messages |
+
+2. **Set the emoji set and the probability.**
+
+   The set can be anything — the panel picks from your selection in random order.
+
+   <figure>
+     <img src="/screenshots/mass-reactions-setup.webp" alt="TeleGain mass reactions setup screen with emoji set, probability, limits and thread distribution" width="1264" height="1080" loading="lazy" />
+     <figcaption>Settings: reaction set, probability, limits and thread distribution across accounts.</figcaption>
+   </figure>
+
+3. **Set limits and rotation.**
+
+   - **Reactions per target** — how many an account places in the current channel before moving on.
+   - **Total reaction limit** — the ceiling for the whole run.
+   - **Rotation** — an account gives way to the next after a set number of reactions, so one does
+     not consume the whole limit.
+   - **Join the target** — a separate toggle for when Telegram requires membership to react.
+     Without that requirement the account joins nothing.
+
+4. **Start it and watch the result.**
+
+   <figure>
+     <img src="/screenshots/mass-reactions-threads.webp" alt="Mass reactions runs tab with per-account counters and a target event log" width="1264" height="1080" loading="lazy" />
+     <figcaption>Runs: how many reactions each account placed and an event log by target.</figcaption>
+   </figure>
+
+</Steps>
+
+## Why reactions are not placed on everything
+
+Reaction probability is the main naturalness control.
+
+<Aside type="caution" title="One hundred per cent is the clearest sign of automation">
+At one hundred per cent an account marks every message in a row, and from the outside it looks
+exactly like what it is: mechanical placement. A value noticeably below one hundred gives a lifelike
+picture — some messages stay without a reaction, like with an ordinary reader. Tune it on a small run.
+</Aside>
+
+## Reactions on behalf of a channel
+
+A separate mode: the reaction comes from the account's personal channel rather than the account itself.
+
+- Telegram Premium on the account and its personal channel are required.
+- The panel shows in advance how many selected accounts meet the conditions.
+- Accounts without Premium simply do not take part in this mode.
+
+## A safe test run
+
+<Steps>
+
+1. Take **two accounts** and **a channel of your own** with open reactions.
+2. Lower the probability well below one hundred and set small limits — per target and total.
+3. Run it and read the log: some messages should stay without a reaction.
+4. Check that the reactions vary rather than repeating one emoji.
+
+</Steps>
+
+## Why a reaction may not have gone through
+
+- Reactions are disabled for everyone on the target.
+- Reactions are forbidden for this account there.
+- Telegram's own reaction limit was reached.
+- Telegram requires joining the chat and joining is turned off.
+- Telegram asked to wait (FloodWait) — the thread pauses.
+
+Refusals appear in the log with a reason: it is immediately clear whether the target or the account
+is at fault.
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| One hundred per cent probability | the clearest sign of automation |
+| The whole total limit on one account | the load is not spread across the fleet |
+| Targets where reactions are closed | the run does nothing |
+
+## Limits and platform rules
+
+Reactions are a public action in someone else's community. Place them where such activity is
+appropriate, and remember that Telegram's rules and the specific channel's rules take precedence
+over job settings. See [Responsible use](/en/responsible-use/).
+
+## FAQ
+
+**How many reactions can one run place?**
+The total run limit and the per-target limit are set with sliders, and the panel shows the ceiling
+next to them. Keep both well below it: the point is evenness, not volume.
+
+**Why did some reactions fail?**
+Common causes: reactions are off on the target, forbidden for the account there, Telegram's limit
+was reached, or the account is not in the chat. The exact reason is in the results.
+
+**Is Telegram Premium required?**
+Not for ordinary reactions. Premium is only needed for the personal-channel mode.
+
+**What probability should I set?**
+Noticeably below one hundred. The exact value is tuned on a small run for your topic;
+one hundred per cent is best avoided entirely.
+
+**What is rotation for?**
+So one account does not consume the whole limit: after a set number of reactions it gives way
+to the next.
+
+**What does joining the target do?**
+If Telegram will not accept a reaction from a non-member, the account joins first and then reacts.
+
+## Related guides
+
+- [How to run story views in Telegram?](/en/modules/story-views/) — the neighbouring module
+- [How to run AI commenting in Telegram?](/en/modules/neurocommenting/) — a more visible presence
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/)
+
+---
+
+Official module page: [Mass reactions](https://telegain.net/en/modules/mass-reactions)

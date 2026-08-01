@@ -1,0 +1,78 @@
+---
+title: 'TeleGain: How to read job and account statistics?'
+description: The TeleGain statistics section — choosing a period, checking the data source and freshness, and moving on to a specific job.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Statistics show aggregates over jobs, accounts and proxies. The important part is not the numbers
+themselves but understanding where they come from and as of when they are current.
+
+The section overview lives on the [statistics page](https://telegain.net/en/modules/statistics).
+
+## How to read it
+
+<Steps>
+
+1. **Choose a period and a section.**
+
+   <figure>
+     <img src="/screenshots/statistics.webp" alt="TeleGain statistics section with aggregates over jobs, accounts and proxies and their data source" width="1264" height="1080" loading="lazy" />
+     <figcaption>Statistics: aggregates over jobs, accounts and proxies with their source and freshness.</figcaption>
+   </figure>
+
+2. **Check the source and freshness.**
+
+   Three things matter for every widget: where the data comes from, which period it covers and when
+   it was updated. Without those, a number on its own means nothing.
+
+3. **Move to the job or the inventory** to break down a specific result.
+
+</Steps>
+
+## Missing data is data
+
+<Aside type="tip" title="Why an empty widget beats a pretty one">
+If there is no data for the period, the panel says so directly and **does not substitute demo
+numbers**. An empty widget means “nothing happened here”, not “everything is broken” — and those
+are fundamentally different conclusions for an operator.
+</Aside>
+
+## What to look at after a run
+
+| Question | Where the answer is |
+| --- | --- |
+| How many targets were actually closed | job results, the status breakdown |
+| Why the volume is below plan | [troubleshooting](/en/troubleshooting/) — limits and skips |
+| Which accounts drop out most often | account statistics |
+| Whether a proxy is overloaded | proxy statistics |
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| Comparing periods of different length | the growth or decline picture comes out false |
+| Judging a campaign by one run | success rates differ several-fold between dataset sources |
+| Ignoring the freshness timestamp | conclusions are drawn from data that has not updated yet |
+
+## FAQ
+
+**Why is a widget empty?**
+There is no data for the chosen period. The panel does not replace missing data with demo numbers.
+
+**Why do the numbers differ from what I see in the job?**
+Check the period and the widget's freshness: aggregates do not update instantly.
+
+**Can I go from statistics to a specific job?**
+Yes, the section links through to the related job or inventory.
+
+## Related guides
+
+- [Troubleshooting](/en/troubleshooting/) — how to analyse a gap between plan and result
+- [How to set up automation in TeleGain?](/en/modules/automation/) — the log of recurring runs
+- [How to manage Telegram accounts in TeleGain?](/en/modules/account-manager/)
+
+---
+
+Official section page: [TeleGain statistics](https://telegain.net/en/modules/statistics)

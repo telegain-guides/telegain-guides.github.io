@@ -1,0 +1,95 @@
+---
+title: 'TeleGain: How to set up automation in TeleGain?'
+description: Automation in TeleGain — choosing a supported task, launch conditions and schedule, checking the configuration and reading the run log.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Automation saves a launch scenario and repeats it on a schedule or on a condition, so you watch
+a log instead of starting the job by hand every time.
+
+The section overview lives on the [automation page](https://telegain.net/en/modules/automation).
+
+## What you need beforehand
+
+- **A task you have already run manually** and whose result you understand.
+- **Free accounts at the moment it fires.** A schedule does not create accounts — if the fleet
+  is busy at that hour, the run will not happen.
+
+<Aside type="caution" title="By hand first">
+Automation repeats a scenario, it does not check whether the scenario makes sense. A run that did
+not work manually will keep not working on a schedule — only now regularly and without your
+attention.
+</Aside>
+
+## How to set it up
+
+<Steps>
+
+1. **Choose a supported task and its parameters.**
+
+   <figure>
+     <img src="/screenshots/automation-wizard.webp" alt="TeleGain automation wizard with task selection, trigger conditions and schedule" width="1264" height="1080" loading="lazy" />
+     <figcaption>Automation wizard: choosing the task, trigger conditions and schedule.</figcaption>
+   </figure>
+
+2. **Set the conditions and the schedule.**
+
+3. **Check the configuration** before enabling the scenario.
+
+4. **Enable it and watch the run log.**
+
+   Every firing appears as a separate entry — with its result, not just the fact that it started.
+
+</Steps>
+
+## What is worth automating
+
+| Scenario | Why it fits |
+| --- | --- |
+| Regular [warmup](/en/modules/account-warmup/) of the reserve | preparation needs no involvement from you |
+| Periodic [dataset collection](/en/modules/parsers/) | the audience refreshes without a manual start |
+| Watching for new posts | this needs a continuous rather than one-off mode |
+
+One-off campaigns where you check the result by hand are usually not worth automating: the saving
+does not offset the risk of repeating a mistake many times over.
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| Automating an unverified scenario | the mistake repeats regularly and unobserved |
+| A schedule that ignores fleet occupation | the run does not happen, the accounts are busy |
+| Firing too often | the load on accounts grows faster than the result |
+| Enable and forget | the log exists precisely so that someone looks at it |
+
+## Limits and platform rules
+
+Regularity makes automation more visible to the platform than a one-off run: identical actions at
+the same time form a recognisable pattern. Telegram's rules apply exactly as they do to a manual
+launch. See [Security](/en/security/).
+
+## FAQ
+
+**Which tasks can be scheduled?**
+The panel shows the supported tasks during selection. The list depends on the module.
+
+**What if the accounts are busy when it fires?**
+The run does not happen — a schedule does not free accounts. This is visible in the log.
+
+**Can a scenario be disabled without deleting it?**
+Yes, a scenario is enabled and disabled separately from its configuration.
+
+**Where can I see what happened?**
+In the run log: every firing is recorded with its result.
+
+## Related guides
+
+- [How to read job and account statistics?](/en/modules/statistics/) — assessing results over time
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/) — a frequent scheduling candidate
+- [Troubleshooting](/en/troubleshooting/)
+
+---
+
+Official section page: [Task automation](https://telegain.net/en/modules/automation)

@@ -1,0 +1,52 @@
+---
+title: Getting started with TeleGain
+description: What to prepare before your first module run — accounts, proxies and warmup — and how to check the fleet is ready.
+lastUpdated: 2026-08-01
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Every module in the panel works with three things: accounts, proxies and a dataset of targets.
+If any one of them is not ready, the run either will not start or will finish empty.
+
+## The order of preparation
+
+<Steps>
+
+1. **Add your accounts.**
+
+   Accounts enter the panel through import and get an observed status.
+   See the [account manager](/en/modules/account-manager/).
+
+2. **Bind proxies.**
+
+   A proxy is needed **before the account's first action in Telegram**, not after. Without a proxy
+   the account will not run at all. See the [proxy centre](/en/modules/proxy-center/).
+
+3. **Warm the accounts up.**
+
+   Telegram restricts fresh and empty accounts fastest. Duration is chosen by the age of the
+   account. See [warmup](/en/modules/account-warmup/).
+
+4. **Collect a dataset of targets.**
+
+   Inviting needs a dataset of **people**, commenting needs a list of **channels**.
+   See [parsers](/en/modules/parsers/).
+
+5. **Run one module on a small volume.**
+
+   Before putting a task on the whole fleet, test the scenario on two or three accounts
+   and a small dataset.
+
+</Steps>
+
+<Aside type="tip" title="What to expect from the first run">
+The first run is not about results — it is a check: do actions reach Telegram, how does the target
+respond and what lands in the log. Volume is increased once the picture is clear.
+</Aside>
+
+## What to read next
+
+- [Module catalogue](/en/modules/) — which module solves which task
+- [Troubleshooting](/en/troubleshooting/) — skips, FloodWait and the “Partial” status
+- [Responsible use](/en/responsible-use/) — limits worth settling before you start

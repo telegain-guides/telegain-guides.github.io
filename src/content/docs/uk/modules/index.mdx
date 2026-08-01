@@ -1,0 +1,50 @@
+---
+title: Модулі TeleGain
+description: Каталог настанов до модулів TeleGain — який модуль яку задачу розв'язує і з чого почати запуск.
+lastUpdated: 2026-08-01
+---
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Кожна настанова відповідає на питання «як запустити» — послідовність дій, призначення полів
+і розбір результату. Опис модулів та їхнього призначення міститься
+в [каталозі на офіційному сайті](https://telegain.net/uk/modules).
+
+Якщо ви тут уперше — почніть із [підготовки акаунтів](/uk/getting-started/).
+
+## Робота з аудиторією
+
+<CardGrid>
+<LinkCard title="Нейрокоментинг" description="Коментарі під новими дописами вибраних каналів." href="/uk/modules/neurocommenting/" />
+<LinkCard title="Інвайтинг" description="Запрошення людей із бази до вашого каналу або групи." href="/uk/modules/inviting/" />
+<LinkCard title="Розсилка" description="Надсилання підготовленого повідомлення за джерелом отримувачів." href="/uk/modules/messaging/" />
+<LinkCard title="Нейрочат" description="Участь акаунтів у діалогах за правилами та промптом." href="/uk/modules/ai-chat/" />
+<LinkCard title="Масові реакції" description="Реакції на наявні та нові повідомлення у ваших цілях." href="/uk/modules/reactions/" />
+<LinkCard title="Перегляд історій" description="Перегляд історій за базою цілей і реакції на них." href="/uk/modules/story-views/" />
+</CardGrid>
+
+## Підготовка та дані
+
+<CardGrid>
+<LinkCard title="Прогрів акаунтів" description="Мікросесії звичайної активності перед робочими задачами." href="/uk/modules/account-warmup/" />
+<LinkCard title="Парсери" description="Збір учасників, каналів і повідомлень у збережені бази." href="/uk/modules/parsers/" />
+<LinkCard title="Менеджер акаунтів" description="Імпорт, статуси, фільтри та пакетні дії." href="/uk/modules/account-manager/" />
+<LinkCard title="Пули акаунтів" description="Збережені групи акаунтів для повторного вибору." href="/uk/modules/account-pools/" />
+<LinkCard title="Проксі-центр" description="Імпорт проксі та прив'язка до акаунтів до першої дії." href="/uk/modules/proxy-center/" />
+</CardGrid>
+
+## Спостереження та регулярність
+
+<CardGrid>
+<LinkCard title="Статистика" description="Агрегати за задачами, акаунтами та проксі з джерелом даних." href="/uk/modules/statistics/" />
+<LinkCard title="Автоматизація" description="Розклади й умови запуску для підтримуваних задач." href="/uk/modules/automation/" />
+<LinkCard title="Журнал скарг" description="Звернення до платформи щодо реальних порушень." href="/uk/modules/reporting/" />
+</CardGrid>
+
+## З чого починається будь-який запуск
+
+| Умова | Чому |
+| --- | --- |
+| [Проксі на кожному акаунті](/uk/modules/proxy-center/) | Без проксі акаунт у роботу не піде |
+| [Прогрів](/uk/modules/account-warmup/) | Свіжі акаунти Telegram обмежує найшвидше |
+| [База цілей потрібного типу](/uk/modules/parsers/) | Інвайтинг працює з людьми, коментування — з каналами |

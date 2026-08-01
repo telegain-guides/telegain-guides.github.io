@@ -1,0 +1,115 @@
+---
+title: 'TeleGain: How to set up proxies for Telegram accounts?'
+description: Working with the TeleGain proxy centre — importing proxies, binding one before the account's first action, watching state and replacing a failing proxy.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The proxy centre stores proxies, shows their observed state and lets you assign them to accounts.
+Without a proxy an account will not run in any module.
+
+The section overview lives on the [proxy centre page](https://telegain.net/en/modules/proxy-center).
+
+## The one rule that matters
+
+<Aside type="caution" title="A proxy is needed before the first action">
+Binding matters **before the account's first action in Telegram**, not after. An account that has
+already gone to Telegram directly and got a proxy afterwards is a different story for the platform,
+and that cannot be fixed retroactively.
+</Aside>
+
+## How to set it up
+
+<Steps>
+
+1. **Import your proxies.**
+
+   Proxies are added as a list. The inventory shows the address, country and provider, along with
+   search and a country filter.
+
+   <figure>
+     <img src="/screenshots/proxy-center.webp" alt="TeleGain proxy centre inventory with address, country, latency and bound accounts" width="1264" height="1080" loading="lazy" />
+     <figcaption>Proxy inventory: address, country, latency and how accounts are distributed across proxies.</figcaption>
+   </figure>
+
+2. **Assign proxies to accounts.**
+
+   Assignment works one by one or in bulk — selecting several proxies and adding accounts. The panel
+   shows how many accounts fall on a proxy: that figure, network pressure, is worth keeping
+   under control.
+
+3. **Watch the state.**
+
+   The panel shows the observed status and latency. A proxy with growing latency or frequent drops
+   is a candidate for replacement before it derails a job.
+
+4. **Replace failing proxies.**
+
+   You can swap an account's proxy for another from the inventory, optionally removing the old one.
+
+</Steps>
+
+## How many accounts per proxy
+
+There is no single correct number, but the principle is simple: the more accounts go through one
+address, the more tightly they are linked from the platform's point of view. Telegram's limits apply
+to account behaviour rather than to proxies — but a shared address makes a group of accounts
+visible as a group.
+
+The panel shows the distribution so that an imbalance is visible before a job starts.
+
+## A safe test run
+
+<Steps>
+
+1. Import **one proxy** and assign it to **one new account**.
+2. Run a short 30-minute [warmup](/en/modules/account-warmup/).
+3. Confirm the actions go through and the proxy latency is stable.
+4. Only then scale the pairing to the rest of the fleet.
+
+</Steps>
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| The account reached Telegram before a proxy was bound | it cannot be fixed retroactively |
+| Too many accounts on one address | the group of accounts becomes visible as a group |
+| A dropping proxy left in place “for now” | it will derail a job at the worst moment |
+| Proxy country that does not match the account | one more reason for the platform to look closer |
+
+## Limits and platform rules
+
+A proxy is transport, not protection. It does not make automation permitted and does not override
+Telegram's rules: restriction decisions are made on account behaviour.
+See [Security](/en/security/).
+
+## FAQ
+
+**Is a proxy mandatory for every account?**
+Yes. Without a proxy the account will not run.
+
+**When should the proxy be bound?**
+Before the account's first action in Telegram.
+
+**Can an account's proxy be changed?**
+Yes, it can be swapped for another from the inventory, optionally removing the old one.
+
+**How many accounts should share one proxy?**
+There is no universal number. The fewer, the less the accounts are linked to each other.
+The panel shows the distribution so imbalance is visible in advance.
+
+**What does latency show?**
+The observed response time. Growing latency is a signal to replace the proxy before a job starts.
+
+## Related guides
+
+- [How to manage Telegram accounts in TeleGain?](/en/modules/account-manager/) — where proxies are assigned
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/) — the first task after binding
+- [Getting started](/en/getting-started/) — the full preparation order
+- [Security](/en/security/)
+
+---
+
+Official section page: [Proxy centre](https://telegain.net/en/modules/proxy-center)

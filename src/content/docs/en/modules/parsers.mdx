@@ -1,0 +1,141 @@
+---
+title: 'TeleGain: How to run a Telegram parser?'
+description: Running a parser in TeleGain — choosing the source and result type, filters, collection statuses and using the saved dataset in other modules.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Parsers collect available data from the sources you point them at and save it as datasets for
+further work. Almost every scenario starts with a dataset: inviting, messaging, story views
+and reactions all work from one.
+
+The module overview lives on the [parsers page](https://telegain.net/en/modules/parsers).
+
+## What you need before launch
+
+- **Accounts with proxies** — collection runs on their behalf.
+- **A source your accounts can reach**: a channel, group or chat.
+- **A clear idea of which dataset type you need.** This is the main decision, and getting it wrong
+  costs the most.
+
+## Which dataset type to choose
+
+<Aside type="caution" title="The most common mistake">
+The inviter invites **people**, so it needs a dataset of users. AI commenting works with a **list
+of channels**. A dataset of the wrong type will not fit the module, and you find out while
+configuring the job.
+</Aside>
+
+| Result type | Where it goes next |
+| --- | --- |
+| Members and commenters | [inviting](/en/modules/inviting/), [messaging](/en/modules/messaging/), [story views](/en/modules/story-views/) |
+| Channels and groups | [AI commenting](/en/modules/neurocommenting/), [mass reactions](/en/modules/reactions/) |
+| Messages | topic analysis and source selection |
+
+## How to launch
+
+<Steps>
+
+1. **Choose the source and the result type.**
+
+   <figure>
+     <img src="/screenshots/parsers-setup.webp" alt="TeleGain parser setup screen with source selection, result type and collection filters" width="1264" height="1080" loading="lazy" />
+     <figcaption>Parser settings: the source, the type of data collected and the selection filters.</figcaption>
+   </figure>
+
+2. **Set the filters.**
+
+   Filters narrow the selection down to the records you will actually use. The tighter the filter,
+   the higher the share of usable targets in the final dataset — and the fewer limits you waste
+   in the next module.
+
+3. **Check the pre-launch plan and available accounts.**
+
+4. **Start the collection and watch the status.**
+
+   | Status | What it means |
+   | --- | --- |
+   | Queued | the job was accepted and waits for a free account |
+   | Running | collection is in progress, the record counter grows |
+   | Done | collection finished completely |
+   | Partial | part of the data was collected, the rest was unavailable |
+   | Awaiting continuation | collection is paused and will continue later |
+   | Has errors | some sources did not return data |
+
+5. **Open the saved dataset and assess it.**
+
+   Look beyond the record count at how usable they are: the share of closed profiles differs
+   several-fold between sources.
+
+</Steps>
+
+## A safe test run
+
+<Steps>
+
+1. Take **one account** and **a small open chat** it can reach.
+2. Collect members with no filters.
+3. Run the dataset through [inviting](/en/modules/inviting/) on **10–15 targets**.
+4. Look at the success share: that is the real quality of the source, not the dataset size.
+
+</Steps>
+
+## Why there are fewer records than expected
+
+- Some data is not available to the account doing the collecting.
+- The source limits what it returns to everyone.
+- Filters removed more than expected.
+- Duplicates are not saved twice.
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| A dataset of the wrong type | the module will not accept it during configuration |
+| Judging a dataset by record count | size does not equal usability |
+| Collecting without filters for a narrow task | the next module's limits go on irrelevant targets |
+| One source for a whole campaign | the audience comes out uniform and burns out fast |
+
+## Limits, user consent and platform rules
+
+Parsing works with personal data even when it is public.
+
+- Collect only what the task genuinely needs, and do not keep it longer than necessary.
+- Data being open does not make it yours: data-protection law applies regardless of where the data
+  came from.
+- The panel collects what is **available** — what the source already shows the account. It does not
+  crack open closed data.
+- Telegram's rules take precedence over job settings.
+
+See [Responsible use](/en/responsible-use/).
+
+## FAQ
+
+**How does a member dataset differ from a channel dataset?**
+The first contains people and suits inviting and messaging. The second contains venues and suits
+commenting and reactions.
+
+**Can one dataset be used in several jobs?**
+Yes, a saved dataset is available for repeated selection.
+
+**Why does the dataset hold fewer records than the source has members?**
+What is available to the account is collected, duplicates are not repeated, and filters remove
+part of the records.
+
+**Does the parser collect private data?**
+No. It collects what the source already shows the account.
+
+**What does the “Partial” status mean?**
+Part of the data was collected and the rest turned out to be unavailable. This is not a failure.
+
+## Related guides
+
+- [How to run inviting in Telegram?](/en/modules/inviting/) — the main consumer of people datasets
+- [How to run messaging in Telegram?](/en/modules/messaging/) — the second consumer
+- [How to run AI commenting in Telegram?](/en/modules/neurocommenting/) — consumer of channel lists
+- [Responsible use](/en/responsible-use/)
+
+---
+
+Official module page: [Telegram parsers](https://telegain.net/en/modules/parsers)

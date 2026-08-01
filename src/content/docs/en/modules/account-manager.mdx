@@ -1,0 +1,104 @@
+---
+title: 'TeleGain: How to manage Telegram accounts in TeleGain?'
+description: The TeleGain account manager — importing accounts, reading statuses, filtering a selection for a job and running batch actions.
+lastUpdated: 2026-08-01
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+The account manager is the inventory of your whole fleet: which accounts exist, what state they are
+in, which proxy each one has and who is currently busy with a job. Preparation for any launch
+starts here.
+
+The section overview lives on the
+[account manager page](https://telegain.net/en/modules/account-manager).
+
+## What you can do here
+
+<Steps>
+
+1. **Import accounts.**
+
+   Accounts are added to the panel and land in the shared inventory.
+
+   <figure>
+     <img src="/screenshots/account-manager-table.webp" alt="TeleGain account manager table with statuses, proxies, pools and the current module" width="1264" height="1080" loading="lazy" />
+     <figcaption>Account inventory: status, bound proxy, pool and the current occupation of each account.</figcaption>
+   </figure>
+
+2. **Read each account's status.**
+
+   The panel shows the **observed** state, not the desired one. If an account has been restricted,
+   it will show here, and no job setting will change that.
+
+3. **Filter a selection for the job.**
+
+   Filters by state, pool, premium status and occupation let you quickly assemble a group of
+   accounts fit for a specific launch.
+
+4. **Run batch actions** on the selected accounts without opening each one.
+
+</Steps>
+
+## Account occupation
+
+One account cannot run two conflicting jobs at once. If an account is busy with
+[warmup](/en/modules/account-warmup/), it cannot be put on a working module — the occupation column
+shows this before you build a selection.
+
+<Aside type="tip" title="Working with a fleet">
+Keep the fleet split: one part works while the other warms up. That way you never hit the situation
+where every account is busy with preparation exactly when you need a launch.
+</Aside>
+
+## Preparing a new account
+
+<Steps>
+
+1. Import the account.
+2. [Assign a proxy](/en/modules/proxy-center/) immediately — before the first action in Telegram.
+3. Fill in the profile: name, avatar, bio. The panel does not do this for you.
+4. Run [warmup](/en/modules/account-warmup/) matched to the account's age.
+5. Only then put it on working modules.
+
+</Steps>
+
+## Common mistakes
+
+| Mistake | What happens |
+| --- | --- |
+| The account went to work before a proxy was bound | it cannot be fixed retroactively |
+| An empty profile | the account looks uninhabited to the platform and to people |
+| A selection that ignores occupation | some accounts will not be picked up by the job |
+| Expecting the panel to “fix” a restricted account | the status reflects the platform's decision |
+
+## Limits and platform rules
+
+The panel shows account state but does not control Telegram's decisions. A restriction imposed by
+the platform is not lifted by job settings. See [Security](/en/security/).
+
+## FAQ
+
+**What does an account status mean?**
+The observed state on Telegram's side, not the desired one. The panel does not pass an account off
+as healthy if the platform thinks otherwise.
+
+**Why can't an account be selected for a job?**
+Usually it is busy with another job or has no proxy.
+
+**Can accounts work without a proxy?**
+No. Without a proxy an account will not run.
+
+**Does the panel fill in the account profile?**
+No. The name, avatar and bio are yours to fill in.
+
+## Related guides
+
+- [How to set up proxies for Telegram accounts?](/en/modules/proxy-center/) — the mandatory next step
+- [How to build an account pool?](/en/modules/account-pools/) — when one selection is needed regularly
+- [How to warm up Telegram accounts?](/en/modules/account-warmup/)
+- [Getting started](/en/getting-started/)
+
+---
+
+Official section page: [Account manager](https://telegain.net/en/modules/account-manager)

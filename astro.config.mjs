@@ -20,8 +20,9 @@ export default defineConfig({
     starlight({
       // Заголовок задан по локалям: иначе суффикс <title> и подпись в шапке
       // остаются русскими на английских и украинских страницах.
+      // Ключ — код языка (`ru`), а не имя локали (`root`).
       title: {
-        root: 'Документация TeleGain',
+        ru: 'Документация TeleGain',
         uk: 'Документація TeleGain',
         en: 'TeleGain Documentation',
       },

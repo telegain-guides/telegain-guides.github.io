@@ -22,9 +22,13 @@ export default defineConfig({
       description:
         'Пошаговые руководства по модулям TeleGain: нейрокомментинг, прогрев аккаунтов, ' +
         'инвайтинг, рассылки, парсеры и работа с прокси.',
+      // Русский — корень сайта; украинский и английский живут в подпапках.
+      // Starlight сам расставит hreflang между локалями одной страницы.
       defaultLocale: 'root',
       locales: {
         root: { label: 'Русский', lang: 'ru' },
+        uk: { label: 'Українська', lang: 'uk' },
+        en: { label: 'English', lang: 'en' },
       },
       head: [
         { tag: 'meta', attrs: { property: 'og:site_name', content: 'Документация TeleGain' } },

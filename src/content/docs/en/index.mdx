@@ -1,0 +1,76 @@
+---
+title: TeleGain Documentation
+description: Step-by-step guides to TeleGain modules — AI commenting, account warmup, inviting, messaging, parsers and proxy setup.
+template: splash
+hero:
+  tagline: 'Step-by-step guides to the panel modules: what to prepare before launch, what every field means and how to read the result.'
+  actions:
+    - text: Get started
+      link: /en/getting-started/
+      icon: right-arrow
+    - text: Module catalogue
+      link: /en/modules/
+      variant: minimal
+    - text: Official site
+      link: https://telegain.net/en
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## What TeleGain is
+
+TeleGain is a panel for working with Telegram accounts and running common growth tasks: comments
+under posts, account warmup, invitations to a channel, messaging, audience collection and result
+tracking.
+
+This knowledge base answers **how to do it**: the order of actions, what each field is for, a safe
+test run and how to read what came back. Module overviews live on the
+[official site](https://telegain.net/en/modules).
+
+<CardGrid>
+  <Card title="Before the first run" icon="rocket">
+    Accounts, proxies and warmup — three things without which any module runs empty.
+    [How to prepare](/en/getting-started/)
+  </Card>
+  <Card title="Running a module" icon="setting">
+    Settings, limits and the pre-launch plan for every module in the panel.
+    [Module catalogue](/en/modules/)
+  </Card>
+  <Card title="When something goes wrong" icon="warning">
+    FloodWait, skipped targets and the “Partial” status — what they actually mean.
+    [Troubleshooting](/en/troubleshooting/)
+  </Card>
+  <Card title="Where the limits are" icon="approve-check">
+    Recipient consent, platform rules and constraints worth settling in advance.
+    [Responsible use](/en/responsible-use/)
+  </Card>
+</CardGrid>
+
+## Popular guides
+
+<LinkCard
+  title="How to run AI commenting in Telegram?"
+  description="Sources, new-post selection, the prompt and why targets get skipped."
+  href="/en/modules/neurocommenting/"
+/>
+<LinkCard
+  title="How to warm up Telegram accounts?"
+  description="Duration, micro-sessions and what warmup does not do."
+  href="/en/modules/account-warmup/"
+/>
+<LinkCard
+  title="How to run inviting in Telegram?"
+  description="Permission checks, two limits and the real volume, FloodWait handling."
+  href="/en/modules/inviting/"
+/>
+
+## Independent of Telegram
+
+TeleGain is an independent service. It is not owned by Telegram, not affiliated with Telegram FZ-LLC
+and is not an official product of the messenger. Telegram is a trademark of its respective owner.
+
+Working through the panel is subject to platform rules and to data-protection and messaging law.
+Responsibility for how the modules are used lies with the operator — see
+[Responsible use](/en/responsible-use/).

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://telegain-guides.github.io/sitemap-index.xml

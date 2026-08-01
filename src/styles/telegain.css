@@ -1,0 +1,32 @@
+/* Фирменная палитра TeleGain поверх темы Starlight. */
+:root {
+  --sl-color-accent-low: #16233f;
+  --sl-color-accent: #3861fb;
+  --sl-color-accent-high: #a7c4ff;
+  --sl-color-white: #ffffff;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #d6e0ff;
+  --sl-color-accent: #2b4fd6;
+  --sl-color-accent-high: #16233f;
+}
+
+/* Скриншоты интерфейса: рамка отделяет тёмный кадр панели от фона страницы. */
+.sl-markdown-content img {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 10px;
+  display: block;
+}
+
+/* Подпись под изображением — единый стиль во всех руководствах. */
+.sl-markdown-content figure {
+  margin: 1.5rem 0;
+}
+
+.sl-markdown-content figcaption {
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-sm);
+  margin-top: 0.5rem;
+  text-align: center;
+}
